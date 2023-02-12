@@ -2,7 +2,6 @@ package org.game;
 
 import org.game.bowling.BowlingGame;
 import org.game.bowling.Frame;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -10,9 +9,6 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BowlingGameTest {
-
-
-    // (1,4)(4,5)(6,4)(5,5)(10,0)(0,1)(7,3)(6,4)(10,0)(2,8,6)
 
     private BowlingGame game;
 

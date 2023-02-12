@@ -3,10 +3,8 @@ package org.game.bowling;
 public class Frame {
 
 	private final static int MAX_PINS = 10;
-
 	private boolean strike = false;
 	private boolean spare = false;
-
 	private int first_try = 0, second_try = 0;
 	private int bonus = 0;
 	private int extra_try = 0;
@@ -26,9 +24,6 @@ public class Frame {
 	public int getBonus() {
 		return bonus;
 	}
-
-
-
 	public void addBonus(int bonus) {
 		this.bonus += bonus;
 	}
@@ -47,14 +42,15 @@ public class Frame {
 			spare = false;
 		}
 	}
-
 	public boolean isSpare() {
 		return spare;
 	}
 
 	public void setSpare() {
-		if ((first_try + second_try) == MAX_PINS)
+		if ((first_try + second_try) == MAX_PINS) {
 			spare = true;
+			strike = false;
+		}
 	}
 
 	public int getFirst_try() {

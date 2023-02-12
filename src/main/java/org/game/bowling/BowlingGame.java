@@ -22,7 +22,7 @@ public class BowlingGame {
                 if (i == 9) {
                     frame.addBonus(frame.getExtra_try());
                 } else {
-                    frame.addBonus(getNextTry(frames, i) + getNextTry(frames, i+1));
+                    frame.addBonus(getNextTry(i) + getNextTry(i+1));
                 }
             }
             total_score += frame.getBonus();
@@ -30,7 +30,7 @@ public class BowlingGame {
         return total_score;
     }
 
-    public int getNextTry(Frame[] frame, int i){
+    public int getNextTry(int i){
 
             if(frames[i].getFirst_try() == 10){
                 if((i+1) >= frames.length){

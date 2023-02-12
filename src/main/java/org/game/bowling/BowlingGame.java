@@ -28,29 +28,35 @@ public class BowlingGame {
                     frame.addBonus(frames[i + 1].getFirst_try());
             } else if (frame.IsStrike()) {
                 if (i == 9) {
-                    frame.addBonus(frame.getSecond_try() + frame.getExtra_try());
+                    frame.addBonus(frame.getExtra_try());
                 } else {
-                    if (frames[i + 1].getFirst_try() != 10) {
-                        frame.addBonus(frames[i + 1].getFirst_try() + frames[i + 1].getSecond_try());
-                    }
-                    else{
-                        frame.addBonus(frames[i + 1].getFirst_try() + frames[i + 2].getFirst_try());
-                    }
+                    frame.addBonus(getNextTry(frames, i) + getNextTry(frames, i+1));
                 }
             }
-
             total_score += frame.getBonus();
-
-
             System.out.print(i + " : ");
-            System.out.print(" " + frame.getFirst_try());
-            System.out.print(" ," + frame.getSecond_try() + "  Strike :" + frame.IsStrike() + "  Spare :" + frame.isSpare() + " Bonus :" + frame.getBonus());
+            System.out.print(" " + frame.getFirst_try()+" ," + frame.getSecond_try() + "  Strike :" + frame.IsStrike() + "  Spare :" + frame.isSpare() + " Bonus :" + frame.getBonus());
             System.out.println(" Score after frame :" + total_score);
         }
-
         return total_score;
     }
 
+    public int getNextTry(Frame[] frame, int i){
+
+        //for(; i<frames.length; i++){
+            if(frames[i].getFirst_try() == 10){
+                if((i+1) >= frames.length){
+                    return frames[i].getSecond_try();
+                }
+                return frames[i+1].getFirst_try();
+            }
+            else{
+                return frames[i].getSecond_try();
+            }
+       // }
+
+        //return 0;
+    }
     public static void main(String[] args) {
 
         Frame[] frames = new Frame[10];

@@ -27,6 +27,8 @@ public class Frame {
 		return bonus;
 	}
 
+
+
 	public void addBonus(int bonus) {
 		this.bonus += bonus;
 	}

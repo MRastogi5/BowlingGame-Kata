@@ -17,7 +17,7 @@ public class BowlingGameTest {
     private BowlingGame game;
 
     @Test
-    public void testBowlingGame(){
+    public void testBowlingGame() {
 
         Frame[] frames = new Frame[10];
         frames[0] = new Frame(1, 4);
@@ -33,66 +33,64 @@ public class BowlingGameTest {
 
         game = new BowlingGame(frames);
         assertEquals(133, game.play());
-
     }
 
     @Test
-    public void testBowlingGameNoScore(){
+    public void testBowlingGameNoScore() {
 
         Frame[] frames = new Frame[10];
-        frames[0] = new Frame(0, 0);
-        frames[1] = new Frame(0, 0);
-        frames[2] = new Frame(0, 0);
-        frames[3] = new Frame(0, 0);
-        frames[4] = new Frame(0, 0);
-        frames[5] = new Frame(0, 0);
-        frames[6] = new Frame(0, 0);
-        frames[7] = new Frame(0, 0);
-        frames[8] = new Frame(0, 0);
-        frames[9] = new Frame(0, 0);
-
+        for (int i = 0; i < 10; i++) {
+            frames[i] = new Frame(0, 0);
+        }
         game = new BowlingGame(frames);
         assertEquals(0, game.play());
-
     }
 
     @Test
-    public void testBowlingGameAllOnes(){
+    public void testBowlingGameAllOnes() {
 
         Frame[] frames = new Frame[10];
-        frames[0] = new Frame(1, 1);
-        frames[1] = new Frame(1, 1);
-        frames[2] = new Frame(1, 1);
-        frames[3] = new Frame(1, 1);
-        frames[4] = new Frame(1, 1);
-        frames[5] = new Frame(1, 1);
-        frames[6] = new Frame(1, 1);
-        frames[7] = new Frame(1, 1);
-        frames[8] = new Frame(1, 1);
-        frames[9] = new Frame(1, 1);
-
+        for (int i = 0; i < 10; i++) {
+            frames[i] = new Frame(1, 1);
+        }
         game = new BowlingGame(frames);
         assertEquals(20, game.play());
-
     }
 
-    
-    public void testBowlingGameAllTens(){
+    @Test
+    public void testBowlingGameAllTens() {
 
         Frame[] frames = new Frame[10];
-        frames[0] = new Frame(10, 0);
-        frames[1] = new Frame(10, 0);
-        frames[2] = new Frame(10, 0);
-        frames[3] = new Frame(10, 0);
-        frames[4] = new Frame(10, 0);
-        frames[5] = new Frame(10, 0);
-        frames[6] = new Frame(10, 0);
-        frames[7] = new Frame(10, 0);
-        frames[8] = new Frame(10, 0);
+        for (int i = 0; i < 9; i++) {
+            frames[i] = new Frame(10, 0);
+        }
         frames[9] = new Frame(10, 10, 10);
 
         game = new BowlingGame(frames);
         assertEquals(300, game.play());
+    }
 
+    @Test
+    public void testBowlingGameTens() {
+
+        Frame[] frames = new Frame[10];
+        for (int i = 0; i < 9; i++) {
+            frames[i] = new Frame(10, 0);
+        }
+        frames[9] = new Frame(9, 1, 10);
+        game = new BowlingGame(frames);
+        assertEquals(279, game.play());
+    }
+
+    @Test
+    public void testBowlingGameNinesAndOne() {
+
+        Frame[] frames = new Frame[10];
+        for (int i = 0; i < 9; i++) {
+            frames[i] = new Frame(9, 1);
+        }
+        frames[9] = new Frame(9, 1, 10);
+        game = new BowlingGame(frames);
+        assertEquals(191, game.play());
     }
 }
